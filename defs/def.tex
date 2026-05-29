@@ -1,0 +1,169 @@
+\documentclass[12pt]{book}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,breakable}
+\usepackage{xcolor}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\definecolor{theoremcolor}{RGB}{0,102,204}      % Blue
+\definecolor{definitioncolor}{RGB}{0,153,76}    % Green
+\definecolor{lemmacolor}{RGB}{153,0,153}        % Purple
+\definecolor{explanationcolor}{RGB}{102,102,102} % Gray
+
+\newtcbtheorem[number within=section]{theorem}{Theorem}%
+{colback=theoremcolor!5!white,
+ colframe=theoremcolor!75!black,
+ colbacktitle=theoremcolor!85!black,
+ fonttitle=\bfseries,
+ boxrule=1pt,
+ breakable
+}{th}
+
+\newtcbtheorem[number within=section]{definition}{Definition}%
+{colback=definitioncolor!5!white,
+ colframe=definitioncolor!75!black,
+ colbacktitle=definitioncolor!85!black,
+ fonttitle=\bfseries,
+ boxrule=1pt,
+ breakable
+}{def}
+
+\newtcbtheorem[number within=section]{lemma}{Lemma}%
+{colback=lemmacolor!5!white,
+ colframe=lemmacolor!75!black,
+ colbacktitle=lemmacolor!85!black,
+ fonttitle=\bfseries,
+ boxrule=1pt,
+ breakable
+}{lem}
+
+\newtcolorbox{explanation}{
+ colback=explanationcolor!5!white,
+ colframe=explanationcolor!75!black,
+ colbacktitle=explanationcolor!85!black,
+ title={Explanation},
+ fonttitle=\bfseries,
+ boxrule=1pt,
+ breakable
+}
+
+\newcommand{\btheorem}{\begin{theorem}{}{}~}
+\newcommand{\etheorem}{\end{theorem}}
+\newcommand{\bdefn}{\begin{definition}{}{}~}
+\newcommand{\edefn}{\end{definition}}
+\newcommand{\blemma}{\begin{lemma}{}{}~}
+\newcommand{\elemma}{\end{lemma}}
+\newcommand{\bexpl}{\begin{explanation}~}
+\newcommand{\eexpl}{\end{explanation}}
+
+% Advanced versions with title and label
+\newcommand{\btheoremtl}[2]{\begin{theorem}{#1}{#2}~}
+\newcommand{\bdefntl}[2]{\begin{definition}{#1}{#2}~}
+\newcommand{\blemmatl}[2]{\begin{lemma}{#1}{#2}~}
+
+% Book information
+\title{Anvaya of Mathematical Definitions}
+\author{Bikash Thakur}
+\date{September 18 2025}
+
+\begin{document}
+
+% Title page
+\maketitle
+
+% Table of contents
+\tableofcontents
+
+\btheorem
+$T:K^n \to K^m$. Then $R(T)$ is the span of the columns of the matrix.
+\etheorem
+
+\bobservation
+If $C$ is compact then conv(C) is also compact.
+\eobservation
+\bremark
+C = conv(C)
+\eremark
+\breason
+Caratheodory
+\ereason
+\bdefn
+what are extreme points? Pizza slice. A point $x$ in a convex set $C$ is called an extreme point if it has the following property \begin{enumerate} \item $x = \lambda y + (1-\lambda)z, yz \in C, \lambda \in (0, 1)$ then $y=z=x$. Open convex sets such as an open circle have no extreme points. Half-space has no extreme points as it is not compact.
+
+
+
+\edefn
+
+Faces are generalizations of extreme points. 
+
+\bdefn
+		A set $F\subset C$ of a convex set $C$ is called a face of $C$ if for any $x \in F$ the following holds \[x = \lambda y + (1-\lambda) z\] for $y,z \in C$ and $\lambda \in (0, 1)$. Then $y,z \in F$. Extreme points are faces that have $1$ element. Faces are like maximal. A triangle with three corners extreme points. Example of the krein-milman theorem.
+
+\edefn
+
+\btheorem
+		Milman's Theorem (Finite Dimensional)
+		Let $C$ (not necessarily convex set) be closed and bounded (compact) set in $\R^d$. If $x$ is an extreme point of conv(C) then $x \in C$.
+
+		\etheorem
+
+\begin{theorem}
+	Krein-Milman (Finite dimensional version)
+	Let $C$ be a compact, convex set in $\R^d$. Let $S$ be the set of extreme points of $C$. Then $S$ is non-empty, and $\conv(S) = C.$
+
+
+	In Words: Closed convex sets ARE just convex hull of their extreme points. The true power of Krein-Milman comes --simplex(gen. of higher dim triangle). Triangles have a unique property that every point is a unique convex combination of the three extreme points.$
+\end{theorem}
+
+
+\begin{theorem}
+	Projection Theorem: Let $C$ be a closed convex set and $y \notin C \subset \R^d$. Then $\exits$ a unique $!$ point $x^* \in C$ such that $x^*$ solves the following problem
+	$\minimize \norm{x -y} \subjectto x \in C$.
+	i.e.,
+\end{theorem}
+
+\bremark
+Unfortunately if $C$ is compact, S is the set of extreme points of C, $S$ may not be compact.
+Two ice-cream cones.
+a single point on the straig line along the circle is not an extreme point.
+
+
+
+		\begin{definition}
+			If $X$ is a finite dimensional vector spaces with basis $B=\{x_1, \cdots, x_n\}$ then $B^* = \{x_1^*, \cdots, x_n^*\} \subset X'$ is the dual basis if \[x_i^*(x_j) = \delta_{ij}\]
+
+		\end{definition}
+		input is column and output is row; for operators T to create a matrix.
+all rank 1 matrices can be written as a column times row vector.
+
+		\begin{theorem}
+			$T:X\to Y$ is a linear transform, $X,Y$ are finite dimensional vector spaces. Let $B_X = \{x_1, \cdots, x_n\}$ be a basis of $X$ with the dual $B_X^* = \{x_1^*, \cdots, x_n^*\}$. Let $B_Y=\{y_1, \cdots, y_n\}$ be a basis of $Y$ with the dual basis $B_Y^* = \{y_1^*, \cdots, y_n^*\}$. Let $K^n$ have standard basis, $\{e_1, \cdots, e_n\}$ and their duals $\{e_1^*, \cdots, e_n^*\}$. Define $J_X x_i = e_i, J_Y y_i = \tilde{e_i}, J_X: X \to K^n , J_Y: Y \to K^m\}$. Then
+			\begin{enumerate}
+				\item \[T = \sum_{i=1}^m \sum_{j=1}^n T_{ij} y_i x_j^*\]
+				\item $\tilde{T}: J_Y T J_X^{-1}: K^n \to K^m$ then $\tilde{T} = \sum_{i=1}^m \sum_{j=1}^n T_{ij} \tilde{e_i} e_j^*$
+					$T_{ij} = y_i^* (Tx_j)$ by def.
+
+
+			\end{enumerate}
+
+		\end{theorem}
+
+		Recall: $T:X \to Y$ X, Y are finited dimensional. $T': Y' \to X'$. $(T'l)': X \to K$ and $(T'l)(x) = (l, Tx)$ so $(T'l, x) = (l, Tx) = l(Tx)$.
+		$X'' \sim X$, $\tilde{x} \in X''$ so $\tilde{x}(l) = l(x)$.
+		$Y'$ has a basis $B_Y^*$
+		$Y''$ has a basis $B_Y$
+		$X'$ has a basis $B_X^*$
+		$X''$ has a basis $B_X$.
+		$T_{ij}' = (T'y_j^*x_i) = (T'y_j^*) (x_i) = (T'y_j^*, x_i) = (y_j^*, Tx_i) = T_{ji}.$
+
+		$T: K^n \to K^m$, $T^T: K^m \to K^n$, $(T^T)_{ij} = T_{ji}$
+		$T': Y' \to X', J_Y': Y' \to K^m, J_X' : X' \to K^n$ and $
+
+
+
+\end{document}

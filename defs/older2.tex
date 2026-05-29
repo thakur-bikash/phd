@@ -1,0 +1,129 @@
+\documentclass[12pt]{book}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+
+% Required packages for colorful boxes
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems,skins,breakable}
+\usepackage{xcolor}
+
+% Your math commands
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Define colors for different theorem types
+\definecolor{theoremcolor}{RGB}{0,102,204}      % Blue
+\definecolor{definitioncolor}{RGB}{0,153,76}    % Green
+\definecolor{lemmacolor}{RGB}{153,0,153}        % Purple
+\definecolor{corollarycolor}{RGB}{255,102,0}    % Orange
+\definecolor{propositioncolor}{RGB}{204,0,102}  % Pink
+\definecolor{explanationcolor}{RGB}{102,102,102} % Gray
+
+% Create colorful theorem environments using tcolorbox
+\newtcbtheorem[number within=section]{theorem}{Theorem}%
+{enhanced,
+ colback=theoremcolor!5!white,
+ colframe=theoremcolor!75!black,
+ colbacktitle=theoremcolor!85!black,
+ fonttitle=\bfseries,
+ drop shadow,
+ sharp corners,
+ boxrule=1pt,
+ separator sign none,
+ description delimiters parenthesis,
+ before upper={\parindent15pt},
+ breakable
+}{th}
+
+\newtcbtheorem[number within=section]{definition}{Definition}%
+{enhanced,
+ colback=definitioncolor!5!white,
+ colframe=definitioncolor!75!black,
+ colbacktitle=definitioncolor!85!black,
+ fonttitle=\bfseries,
+ drop shadow,
+ sharp corners,
+ boxrule=1pt,
+ separator sign none,
+ description delimiters parenthesis,
+ before upper={\parindent15pt},
+ breakable
+}{def}
+
+\newtcbtheorem[number within=section]{lemma}{Lemma}%
+{enhanced,
+ colback=lemmacolor!5!white,
+ colframe=lemmacolor!75!black,
+ colbacktitle=lemmacolor!85!black,
+ fonttitle=\bfseries,
+ drop shadow,
+ sharp corners,
+ boxrule=1pt,
+ separator sign none,
+ description delimiters parentheses,
+ before upper={\parindent15pt},
+ breakable
+}{lem}
+
+% Define explanation box environment
+\newtcolorbox{explanation}[1][]{
+ enhanced,
+ colback=explanationcolor!5!white,
+ colframe=explanationcolor!75!black,
+ colbacktitle=explanationcolor!85!black,
+ title={Explanation},
+ fonttitle=\bfseries,
+ rounded corners,
+ boxrule=1pt,
+ drop shadow,
+ before upper={\parindent15pt},
+ breakable,
+ #1
+}
+
+% Define custom commands for easy typing
+% Note: tcolorbox theorems require a label parameter, so we use empty {}
+\newcommand{\btheorem}{\begin{theorem}{}}
+\newcommand{\etheorem}{\end{theorem}}
+\newcommand{\bdefn}{\begin{definition}{}~}
+\newcommand{\edefn}{\end{definition}}
+\newcommand{\blemma}{\begin{lemma}{}}
+\newcommand{\elemma}{\end{lemma}}
+
+% Commands for explanation box
+\newcommand{\bexpl}{\begin{explanation}}
+\newcommand{\eexpl}{\end{explanation}}
+
+\author{Your Name}
+\date{September 18, 2025}
+\title{Mathematical Definitions and Theorems}
+
+\begin{document}
+\maketitle
+
+\chapter{Introduction}
+\section{Basic Concepts}
+
+\bdefn
+Let $S$ be a set. We say $S$ is \emph{countable} if there exists a bijection between $S$ and a subset of the natural numbers $\mathbb{N}$.
+\edefn
+
+\bexpl
+~This definition means that we can "count" the elements of $S$ using natural numbers, even if $S$ is infinite. Examples include $\Z$ and $\mathbb{Q}$, but not $\R$.
+\eexpl
+
+\btheorem
+The set of integers $\Z$ is countable.
+\etheorem
+
+\bexpl
+We can prove this by showing that the mapping $f: \mathbb{N} \to \Z$ defined by:
+\begin{align}
+f(n) = \begin{cases} 
+\frac{n}{2} & \text{if } n \text{ is even} \\
+-\frac{n+1}{2} & \text{if } n \text{ is odd}
+\end{cases}
+\end{align}
+is a bijection. This gives us the sequence: $0, -1, 1, -2, 2, -3, 3, \ldots$
+\eexpl
+
+\end{document}
